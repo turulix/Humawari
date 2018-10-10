@@ -61,27 +61,27 @@ def main(DrawTextThing):
 		result.paste(img, (y, x))
 
 	draw = ImageDraw.Draw(result)
-	font = ImageFont.truetype("times.ttf", 150)
-	draw.text((0,0),str(DrawTextThing),(255,255,255),font=font)
+	#font = ImageFont.truetype("times.ttf", 150)
+	#draw.text((0,0),str(DrawTextThing),(255,255,255),font=font)
 
 	result.save("./FullEarthImg/" + str(DrawTextThing).replace(":", "-") + ".jpg")
 	
 	time.sleep(1)
 	FullEarth = " \FullEarthImg\ ".replace(" ", "")
 	
-	image_path = os.path.abspath(os.path.dirname(__file__)) + str(FullEarth) + str(DrawTextThing).replace(":","-") + ".jpg"
-	print(str(image_path))
-	SPI_SETDESKWALLPAPER  = 0x0014
-	SPIF_UPDATEINIFILE    = 0x0001
-	SPIF_SENDWININICHANGE = 0x0002
+	#image_path = os.path.abspath(os.path.dirname(__file__)) + str(FullEarth) + str(DrawTextThing).replace(":","-") + ".jpg"
+	#print(str(image_path))
+	#SPI_SETDESKWALLPAPER  = 0x0014
+	#SPIF_UPDATEINIFILE    = 0x0001
+	#SPIF_SENDWININICHANGE = 0x0002
 
-	user32 = ctypes.WinDLL('user32')
-	SystemParametersInfo = user32.SystemParametersInfoW
-	SystemParametersInfo.argtypes = ctypes.c_uint,ctypes.c_uint,ctypes.c_void_p,ctypes.c_uint
-	SystemParametersInfo.restype = wintypes.BOOL
-	print(SystemParametersInfo(SPI_SETDESKWALLPAPER, 0, image_path, SPIF_UPDATEINIFILE | SPIF_SENDWININICHANGE))
+	#user32 = ctypes.WinDLL('user32')
+	#SystemParametersInfo = user32.SystemParametersInfoW
+	#SystemParametersInfo.argtypes = ctypes.c_uint,ctypes.c_uint,ctypes.c_void_p,ctypes.c_uint
+	#SystemParametersInfo.restype = wintypes.BOOL
+	#print(SystemParametersInfo(SPI_SETDESKWALLPAPER, 0, image_path, SPIF_UPDATEINIFILE | SPIF_SENDWININICHANGE))
 
-	print("Screen Set")
+	#print("Screen Set")
 	
 if __name__ == "__main__":
 	main(sys.argv[1:])
